@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.cmpe277.hackathon.mainactivity.ui.Agriculture.AgricultureFragment"
+        android:name="com.cmpe277.hackathon.mainactivity.ui.agriculture.AgricultureFragment"
         android:label="@string/agriculture"
         tools:layout="@layout/fragment_agriculture" />
 

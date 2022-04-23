@@ -1,4 +1,4 @@
-package com.cmpe277.hackathon.mainactivity.ui.Agriculture;
+package com.cmpe277.hackathon.mainactivity.ui.agriculture;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

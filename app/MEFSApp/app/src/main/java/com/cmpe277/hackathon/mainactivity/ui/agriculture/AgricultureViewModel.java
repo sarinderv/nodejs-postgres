@@ -1,4 +1,4 @@
-package com.cmpe277.hackathon.mainactivity.ui.Agriculture;
+package com.cmpe277.hackathon.mainactivity.ui.agriculture;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
