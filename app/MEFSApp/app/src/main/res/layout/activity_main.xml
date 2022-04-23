@@ -6,10 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="233dp"
         android:layout_height="63dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginBottom="96dp"
         android:text="Welcome to Macroeconomic Food Security App"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/macroeconomic_researcher_button"
@@ -17,42 +20,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <Button-->
-<!--        android:id="@+id/login_button"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="148dp"-->
-<!--        android:layout_marginTop="168dp"-->
-<!--        android:text="@string/macroeconomic_researcher_btn"/>-->
-
     <ImageButton
         android:id="@+id/macroeconomic_researcher_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="96dp"
         android:contentDescription="MacroEconomic"
         android:src="@drawable/user"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/government_official_button"
-        app:layout_constraintHorizontal_bias="0.33"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <ImageButton
         android:id="@+id/government_official_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="88dp"
         android:contentDescription="government"
         android:src="@drawable/user"
         android:text="@string/government_official_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <include
-        android:id="@+id/include_dashboard"
-        layout="@layout/activity_dashboard"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

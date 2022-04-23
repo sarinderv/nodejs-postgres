@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
                 if (usi == null){
                     userType = UserType.None;
-                    TextView v = (TextView) findViewById(R.id.textView);
-                    v.setText(userType.getTitle());
+                  /*  TextView v = (TextView) findViewById(R.id.textView);
+                    v.setText(userType.getTitle());*/
                     ImageButton macro_button=(ImageButton)findViewById(R.id.macroeconomic_researcher_button);
                     macro_button.setOnClickListener((view)->macroUserClick(view));
                     ImageButton gov_button =(ImageButton)findViewById(R.id.government_official_button);
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void login(){
         UserType l=this.userType;
-        if(l==UserType.None){
             l=UserType.ECON_RES;
             UserInfo usi=new UserInfo();
             usi.usr_attr="usertype";
@@ -82,12 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }).start();
 
-
-          //  access.createUserType(UserType.ECON_RES);
-        }
-        else{
-            callIntent(l);
-        }
 
     }
     public void callIntent(UserType l){
