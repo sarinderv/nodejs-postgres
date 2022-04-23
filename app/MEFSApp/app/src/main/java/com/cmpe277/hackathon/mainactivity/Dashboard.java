@@ -32,6 +32,12 @@ public class Dashboard extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_dashboard);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("userType");
+            System.out.println(value);
+            //The key argument here must match that used in the other activity
+        }
     }
 
 }
