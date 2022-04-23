@@ -4,5 +4,13 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="login_btn">Continue</string>
+    <string name="macroeconomic_researcher_btn">Macroeconomic Researcher</string>
+    <string name="government_official_btn">Government Official</string>
+    <string name="gdp_growth_rage">GDP (Growth Rage)</string>
+    <string name="gdp_current_usd">GDP (USA)</string>
+    <string name="current_account_balance">Current Account Balance</string>
+    <string name="fdi_net">FDI Net</string>
+    <string name="fdi_net_in">FDI Inflows (USD)</string>
+    <string name="fdi_net_out">FDI Outflows (USD)</string>
+    <string name="show_button"> Show </string>
 </resources>
