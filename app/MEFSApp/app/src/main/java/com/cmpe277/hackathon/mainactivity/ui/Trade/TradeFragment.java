@@ -1,10 +1,9 @@
-package com.cmpe277.hackathon.mainactivity.ui.dashboard;
+package com.cmpe277.hackathon.mainactivity.ui.Trade;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -12,14 +11,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.cmpe277.hackathon.mainactivity.databinding.FragmentDashboardBinding;
 
-public class DashboardFragment extends Fragment {
+public class TradeFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        TradeViewModel dashboardViewModel =
+                new ViewModelProvider(this).get(TradeViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

@@ -1,4 +1,4 @@
-package com.cmpe277.hackathon.mainactivity.ui.home;
+package com.cmpe277.hackathon.mainactivity.ui.Agriculture;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,14 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.cmpe277.hackathon.mainactivity.databinding.FragmentHomeBinding;
 
-public class HomeFragment extends Fragment {
+public class AgricultureFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        AgricultureViewModel homeViewModel =
+                new ViewModelProvider(this).get(AgricultureViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

@@ -7,15 +7,15 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.cmpe277.hackathon.mainactivity.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.cmpe277.hackathon.mainactivity.ui.Agriculture.AgricultureFragment"
+        android:label="@string/agriculture"
+        tools:layout="@layout/fragment_agriculture" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.cmpe277.hackathon.mainactivity.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.cmpe277.hackathon.mainactivity.ui.Trade.TradeFragment"
+        android:label="@string/trade"
+        tools:layout="@layout/fragment_trade" />
 
     <fragment
         android:id="@+id/navigation_notifications"

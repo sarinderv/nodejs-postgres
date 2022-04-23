@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">MEFS App</string>
+    <string-array name="countries">
+        <item>China</item>
+        <item>India</item>
+        <item>USA</item>
+    </string-array>
     <string name="title_activity_dashboard">Dashboard</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="agriculture">Agriculture</string>
+    <string name="trade">Trade</string>
     <string name="title_notifications">Notifications</string>
     <string name="macroeconomic_researcher_btn">Macroeconomic Researcher</string>
     <string name="government_official_btn">Government Official</string>
@@ -12,5 +17,4 @@
     <string name="fdi_net">FDI Net</string>
     <string name="fdi_net_in">FDI Inflows (USD)</string>
     <string name="fdi_net_out">FDI Outflows (USD)</string>
-    <string name="show_button"> Show </string>
 </resources>
