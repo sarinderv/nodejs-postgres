@@ -24,3 +24,20 @@ INSERT INTO quote (id, quote, author) VALUES
 (15, 'Measuring programming progress by lines of code is like measuring aircraft building progress by weight.', 'Bill Gates'), 
 (16, 'Controlling complexity is the essence of computer programming.', 'Brian Kernighan'),
 (17, 'The only way to learn a new programming language is by writing programs in it.', 'Dennis Ritchie');
+
+CREATE TABLE macroeconomic (
+    year integer,
+    country character varying(255) NOT NULL,
+    gdpCurrentUSD bigint,
+    gdpAnnualGrowthPercentage integer,
+    currentAccountBalance bigint,
+    fdiNetUSD bigint,
+    fdiNetInflowsPercentage integer,
+    fdiNetOutflowsPercentage integer,
+    created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    PRIMARY KEY(year, country)
+);
+
+INSERT INTO macroeconomic (year, country, gdpCurrentUSD, gdpAnnualGrowthPercentage, currentAccountBalance, fdiNetUSD, fdiNetInflowsPercentage, fdiNetOutflowsPercentage) VALUES 
+(1999, 'USA', 123, 45, 67890, 12, 34, 45);
