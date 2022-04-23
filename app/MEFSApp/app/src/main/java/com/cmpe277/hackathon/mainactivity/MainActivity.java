@@ -1,5 +1,6 @@
 package com.cmpe277.hackathon.mainactivity;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,35 +8,43 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.view.View;
 import android.widget.Button;
+
+import android.widget.ImageButton;
+import com.cmpe277.hackathon.mainactivity.models.UserType;
 import android.widget.TextView;
+
 
 import com.cmpe277.hackathon.mainactivity.database.AppDBHelper;
 import com.cmpe277.hackathon.mainactivity.database.AppDatabase;
-import com.cmpe277.hackathon.mainactivity.database.MEFSDBAccess;
 import com.cmpe277.hackathon.mainactivity.entities.UserInfo;
-import com.cmpe277.hackathon.mainactivity.models.UserType;
+
 
 public class MainActivity extends AppCompatActivity {
-    MEFSDBAccess access;
+
     UserType userType;
     AppDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button b=(Button)findViewById(R.id.login_button);
-        b.setVisibility(View.INVISIBLE);
+        //access db and see if user should be able to login
+
         new Thread(()->{
             db= AppDBHelper.getDatabase(this);
             UserInfo usi=db.userInfoDao().findByName("usertype");
             runOnUiThread(()-> {
-                b.setOnClickListener((view) -> onContinueClick(view));
+
+
                 if (usi == null){
                     userType = UserType.None;
-                TextView v = (TextView) findViewById(R.id.textView);
-                v.setText(userType.getTitle());
-                b.setVisibility(View.VISIBLE);
-            }
+                    TextView v = (TextView) findViewById(R.id.textView);
+                    v.setText(userType.getTitle());
+                    ImageButton macro_button=(ImageButton)findViewById(R.id.macroeconomic_researcher_button);
+                    macro_button.setOnClickListener((view)->macroUserClick(view));
+                    ImageButton gov_button =(ImageButton)findViewById(R.id.government_official_button);
+                    gov_button.setOnClickListener((view)->govUserClick(view));
+                }
                 else{
                     userType=UserType.valueOfOrDefault(usi.usr_attr_value);
                     callIntent(userType);
@@ -43,8 +52,22 @@ public class MainActivity extends AppCompatActivity {
 
             });
         }).start();
+
+
+
+
     }
-    public void onContinueClick(View view){
+    public void macroUserClick(View view){
+        this.userType= UserType.ECON_RES;
+        login();
+    }
+
+    public void govUserClick(View view){
+        this.userType= UserType.GOVT_REP;
+        login();
+
+    }
+    public void login(){
         UserType l=this.userType;
         if(l==UserType.None){
             l=UserType.ECON_RES;
@@ -74,7 +97,5 @@ public class MainActivity extends AppCompatActivity {
     }
     public void onDestroy() {
         super.onDestroy();
-        if(access!=null)
-            access.close();
     }
 }
