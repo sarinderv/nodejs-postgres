@@ -10,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.cmpe277.hackathon.mainactivity.databinding.FragmentHomeBinding;
+import com.cmpe277.hackathon.mainactivity.databinding.FragmentAgricultureBinding;
 
 public class AgricultureFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentAgricultureBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         AgricultureViewModel homeViewModel =
                 new ViewModelProvider(this).get(AgricultureViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentAgricultureBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;

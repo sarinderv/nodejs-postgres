@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/getTheGraph"
+        android:id="@+id/activity_linechart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="52dp"
