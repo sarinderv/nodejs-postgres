@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainActivity">
         <activity
-            android:name=".Choice"
-            android:exported="false" android:theme="@android:style/Theme.Holo.Light.Dialog"/>
-        <activity
             android:name=".Dashboard"
             android:exported="false"
             android:label="@string/title_activity_dashboard"

@@ -29,6 +29,7 @@ import com.anychart.enums.Anchor;
 import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
+import com.cmpe277.hackathon.mainactivity.ChoiceSheetDialog;
 import com.cmpe277.hackathon.mainactivity.R;
 import com.cmpe277.hackathon.mainactivity.adapter.MacroResponseConverter;
 import com.cmpe277.hackathon.mainactivity.client.RetrofitClientInstance;
@@ -60,7 +61,9 @@ Set set;
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         Context context = getContext();
-
+        ChoiceSheetDialog bottomSheet = new ChoiceSheetDialog();
+        bottomSheet.show(getParentFragmentManager(),
+                "ModalBottomSheet");
         String[] items = new String[]{"USA", "India", "China"};
         Map<String, List<DataEntry>> countryData = new HashMap<>(); // country->data hashmap
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, items);
