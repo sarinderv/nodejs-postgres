@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,7 +24,6 @@ import com.anychart.enums.Anchor;
 import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
-import com.cmpe277.hackathon.mainactivity.Dashboard;
 import com.cmpe277.hackathon.mainactivity.R;
 import com.cmpe277.hackathon.mainactivity.adapter.MacroResponseConverter;
 import com.cmpe277.hackathon.mainactivity.client.RetrofitClientInstance;
@@ -32,7 +33,9 @@ import com.cmpe277.hackathon.mainactivity.models.MacroEconomicDataPoint;
 import com.cmpe277.hackathon.mainactivity.service.IMacroService;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,43 +52,52 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        Context context = getContext();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
-
+        String[] items = new String[]{"USA", "India", "China"};
+        Map<String, List<DataEntry>> countryData = new HashMap<>(); // country->data hashmap
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, items);
+        Spinner dropdown = root.findViewById(R.id.country_spinner);
+        dropdown.setAdapter(adapter);
         AnyChartView anyChartView = root.findViewById(R.id.any_chart_view);
 
         // make REST call to retrieve data
         IMacroService service = RetrofitClientInstance.getRetrofitInstance().create(IMacroService.class);
         Call<MacroAPIResponse> call = service.getMacroDetails();
-        Context context = getContext();
         call.enqueue(new Callback<MacroAPIResponse>() {
             @Override
             public void onResponse(Call<MacroAPIResponse> call, Response<MacroAPIResponse> response) {
                 MacroResponseConverter converter=new MacroResponseConverter();
                 List<MacroEconomicDataPoint> points=converter.getDataPoints(response.body().getData());
 
-                List<DataEntry> data = new ArrayList<>();
+                // on REST response, populate the country->data hashmap
+                for (String country : items) {
+                    List<DataEntry> data = new ArrayList<>();
+                    points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase(country)).forEach((obj)->{
+                        data.add(new ValueDataEntry(obj.getYear(), obj.getGdp_current_usd()));
+                    });
+                    countryData.put(country, data);
+                }
+                Toast.makeText(context, "MacroEconomic data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
 
-                points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase("USA")).forEach((obj)->{
-                    data.add(new ValueDataEntry(obj.getYear(), obj.getGdp_current_usd()));
-                });
-                Toast.makeText(context, "Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
-
+                String country = dropdown.getSelectedItem().toString();
+                List<DataEntry> data = countryData.get(country);
                 Cartesian cartesian = AnyChart.column();
-
-                data.add(new ValueDataEntry("Rouge", 80540));
-                data.add(new ValueDataEntry("Foundation", 94190));
-                data.add(new ValueDataEntry("Mascara", 102610));
-                data.add(new ValueDataEntry("Lip gloss", 110430));
-                data.add(new ValueDataEntry("Lipstick", 128000));
-                data.add(new ValueDataEntry("Nail polish", 143760));
-                data.add(new ValueDataEntry("Eyebrow pencil", 170670));
-                data.add(new ValueDataEntry("Eyeliner", 213210));
-                data.add(new ValueDataEntry("Eyeshadows", 249980));
-
-                System.out.println("data="+ data.size());
                 Column column = cartesian.column(data);
+
+                dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                        // if country changed then get the new data and refresh the chart, only the y-axis needs to be refreshed
+                        Toast.makeText(context, "Country: "+ items[position], Toast.LENGTH_SHORT).show();
+                        cartesian.column(countryData.get(items[position]));
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parentView) {
+                    }
+
+                });
 
                 column.tooltip()
                         .titleFormat("{%X}")
@@ -94,17 +106,12 @@ public class HomeFragment extends Fragment {
                         .offsetX(0d)
                         .offsetY(5d)
                         .format("${%Value}{groupsSeparator: }");
-
                 cartesian.animation(true);
                 cartesian.title("GDP by Year");
-
                 cartesian.yScale().minimum(0d);
-
-                cartesian.yAxis(0).labels().format("${%Value}{groupsSeparator: }");
-
+                cartesian.yAxis(0).labels().format("{%seriesName}: {%value}{scale:(1)(1000)(1000)(1000)(1000)|( d)( th)( M)( B)( T)}");
                 cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
                 cartesian.interactivity().hoverMode(HoverMode.BY_X);
-
                 cartesian.xAxis(0).title("Product");
                 cartesian.yAxis(0).title("$(USD)");
 
