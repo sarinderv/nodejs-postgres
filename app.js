@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var quotesRouter = require('./routes/quotes');
 var macroeconomicRouter = require('./routes/macroeconomic');
 var agriculturalRouter = require('./routes/agricultural');
+var debtRouter = require('./routes/debt');
 
 var app = express();
 
@@ -20,5 +21,6 @@ app.use('/', indexRouter);
 app.use('/quotes', quotesRouter);
 app.use('/macroeconomic', macroeconomicRouter);
 app.use('/agricultural', agriculturalRouter);
+app.use('/debt',debtRouter);
 
 module.exports = app;
