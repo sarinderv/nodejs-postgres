@@ -1,4 +1,4 @@
-package com.cmpe277.hackathon.mainactivity.ui.Trade;
+package com.cmpe277.hackathon.mainactivity.ui.trade;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

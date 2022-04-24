@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.cmpe277.hackathon.mainactivity.ui.Trade.TradeFragment"
+        android:name="com.cmpe277.hackathon.mainactivity.ui.trade.TradeFragment"
         android:label="@string/trade"
         tools:layout="@layout/fragment_trade" />
 
