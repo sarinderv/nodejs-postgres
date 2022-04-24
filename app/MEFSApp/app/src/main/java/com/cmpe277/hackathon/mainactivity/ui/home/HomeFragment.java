@@ -20,6 +20,8 @@ import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Cartesian;
 import com.anychart.core.cartesian.series.Column;
+import com.anychart.data.Mapping;
+import com.anychart.data.Set;
 import com.anychart.enums.Anchor;
 import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
@@ -45,7 +47,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private Cartesian cartesian;
-
+Set set;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -86,7 +88,10 @@ public class HomeFragment extends Fragment {
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                         // if country changed then get the new data and refresh the chart, only the y-axis needs to be refreshed
                         Toast.makeText(context, "Country: "+ items[position], Toast.LENGTH_SHORT).show();
-                        cartesian.column(countryData.get(items[position]));
+                       // cartesian.column(countryData.get(items[position]));
+                        List<DataEntry> entries=countryData.get(items[position]);
+                        //cartesian = newCartesian(entries, "GDP by Year");
+                        set.data(entries);
                     }
 
                     @Override
@@ -97,7 +102,11 @@ public class HomeFragment extends Fragment {
 
                 String country = dropdown.getSelectedItem().toString();
                 List<DataEntry> data = countryData.get(country);
-                cartesian = newCartesian(data, "GDP by Year");
+                set = Set.instantiate();
+                set.data(data);
+                Mapping series1Data = set.mapAs("{ x: 'x', value: 'value' }");
+
+                cartesian = newCartesian(series1Data, "GDP by Year");
                 anyChartView.setChart(cartesian);
             }
 
@@ -111,9 +120,10 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-    private Cartesian newCartesian(List<DataEntry> data, String title) {
-        Cartesian cartesian = AnyChart.column();
-        Column column = cartesian.column(data);
+    private Cartesian newCartesian(Mapping seriesData, String title) {
+        Cartesian cartesian =  AnyChart.column();
+        Column column = cartesian.column(seriesData);
+
         column.tooltip()
                 .titleFormat("{%X}")
                 .position(Position.CENTER_BOTTOM)
@@ -128,6 +138,7 @@ public class HomeFragment extends Fragment {
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
         cartesian.interactivity().hoverMode(HoverMode.BY_X);
         cartesian.yAxis(0).title("$(USD)");
+
         return cartesian;
     }
 
