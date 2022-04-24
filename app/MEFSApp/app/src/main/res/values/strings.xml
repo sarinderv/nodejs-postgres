@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">MainActivity</string>
+    <string name="app_name">MEFS App</string>
+    <string-array name="countries">
+        <item>China</item>
+        <item>India</item>
+        <item>USA</item>
+    </string-array>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_home">Macro Economic</string>
+    <string name="title_dashboard">Debt</string>
+    <string name="title_notifications">Agriculture</string>
+    <string name="macroeconomic_researcher_btn">Macroeconomic Researcher</string>
+    <string name="government_official_btn">Government Official</string>
+    <string name="gdp_growth_rage">GDP (Growth Range)</string>
+    <string name="gdp_current_usd">GDP (USA)</string>
+    <string name="current_account_balance">Current Account Balance</string>
+    <string name="fdi_net">FDI Net</string>
+    <string name="fdi_net_in">FDI Inflows (USD)</string>
+    <string name="fdi_net_out">FDI Outflows (USD)</string>
+    <string name="show_button"> Show </string>
+    <string name="apply_btn"> apply </string>
+    <string name="usr_type_econ"> Economic Researcher </string>
+    <string name="usr_type_govt"> Government Employee </string>
 </resources>
