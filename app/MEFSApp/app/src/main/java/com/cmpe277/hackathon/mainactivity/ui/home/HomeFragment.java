@@ -67,8 +67,8 @@ public class HomeFragment extends Fragment {
 
                 List<DataEntry> data = new ArrayList<>();
 
-                points.stream().filter(medp -> medp.getCountry() == "USA").forEach((obj)->{
-                    //data.add(new ValueDataEntry(obj.getYear(), obj.getGdp_current_usd());
+                points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase("USA")).forEach((obj)->{
+                    data.add(new ValueDataEntry(obj.getYear(), obj.getGdp_current_usd()));
                 });
                 Toast.makeText(context, "Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
 
@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
                 cartesian.interactivity().hoverMode(HoverMode.BY_X);
 
                 cartesian.xAxis(0).title("Product");
-                cartesian.yAxis(0).title("Dollars");
+                cartesian.yAxis(0).title("$(USD)");
 
                 anyChartView.setChart(cartesian);
             }
