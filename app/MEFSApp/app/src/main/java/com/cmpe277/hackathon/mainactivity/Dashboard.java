@@ -1,7 +1,11 @@
 package com.cmpe277.hackathon.mainactivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.cmpe277.hackathon.mainactivity.client.RetrofitClientInstance;
+import com.cmpe277.hackathon.mainactivity.dto.MacroAPIResponse;
+import com.cmpe277.hackathon.mainactivity.service.IMacroService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +15,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.cmpe277.hackathon.mainactivity.databinding.ActivityDashboardBinding;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -38,6 +46,22 @@ public class Dashboard extends AppCompatActivity {
             System.out.println(value);
             //The key argument here must match that used in the other activity
         }
+        //loading data
+        /*Create handle for the RetrofitInstance interface*/
+        IMacroService service = RetrofitClientInstance.getRetrofitInstance().create(IMacroService.class);
+        Call<MacroAPIResponse> call = service.getMacroDetails();
+        call.enqueue(new Callback<MacroAPIResponse>() {
+            @Override
+            public void onResponse(Call<MacroAPIResponse> call, Response<MacroAPIResponse> response) {
+                Toast.makeText(Dashboard.this, "Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<MacroAPIResponse> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(Dashboard.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

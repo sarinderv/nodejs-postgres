@@ -13,10 +13,7 @@ public interface UserInfoDao {
     @Query("SELECT * FROM userinfo")
     List<UserInfo> getAllUserInfo();
 
-
-
     @Query("SELECT * FROM userinfo WHERE usr_attr LIKE :usertype  LIMIT 1")
-
     UserInfo findByName(String usertype);
 
     @Insert

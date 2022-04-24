@@ -80,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
                     callIntent(t);
                 });
             }).start();
-
-
     }
     public void callIntent(UserType l){
         Intent i=new Intent(this,Dashboard.class);
