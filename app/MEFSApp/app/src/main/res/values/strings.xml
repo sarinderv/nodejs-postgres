@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">MEFS App</string>
     <string name="title_activity_dashboard">Dashboard</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Macro Economic</string>
+    <string name="title_dashboard">Agriculture</string>
+    <string name="title_notifications">Trade</string>
     <string name="macroeconomic_researcher_btn">Macroeconomic Researcher</string>
     <string name="government_official_btn">Government Official</string>
     <string name="gdp_growth_rage">GDP (Growth Rage)</string>
