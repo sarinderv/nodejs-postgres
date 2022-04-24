@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,14 +18,14 @@ public class TradeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        TradeViewModel dashboardViewModel =
+        TradeViewModel tradeViewModel =
                 new ViewModelProvider(this).get(TradeViewModel.class);
 
         binding = FragmentTradeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         //final TextView textView = binding.titleTextView;
-        //dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //tradeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

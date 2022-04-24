@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,17 +7,70 @@
     android:layout_height="match_parent"
     tools:context=".ui.agriculture.AgricultureFragment">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
+    <CheckBox
+        android:id="@+id/checkbox_agricultural_contribution"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:text="@string/agricultural_contribution"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_manufacturing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.821" />
+
+    <CheckBox
+        android:id="@+id/checkbox_manufacturing"
+        android:layout_width="158dp"
+        android:layout_height="47dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/manufacturing"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_annual_percent_growth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_annual_percent_growth"
+        android:layout_width="162dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="36dp"
+        android:text="@string/annual_percent_growth"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_fertilizer_kgs_per_hectare"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_fertilizer_kgs_per_hectare"
+        android:layout_width="165dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="44dp"
+        android:text="@string/fertilizer_kgs_per_hectare"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_fertilizer_percent_production"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_fertilizer_percent_production"
+        android:layout_width="167dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/fertilizer_percent_production"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/show_button"
+        android:layout_width="99dp"
+        android:layout_height="47dp"
+        android:text="@string/show_button"
+        android:onClick="Check"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_fertilizer_percent_production" />
 </androidx.constraintlayout.widget.ConstraintLayout>

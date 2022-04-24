@@ -19,4 +19,9 @@
     <string name="fdi_net_in">FDI Inflows (USD)</string>
     <string name="fdi_net_out">FDI Outflows (USD)</string>
     <string name="show_button">Show</string>
+    <string name="agricultural_contribution">Agricultural Contribution</string>
+    <string name="manufacturing">Manufacturing</string>
+    <string name="annual_percent_growth">Annual Percent Growth</string>
+    <string name="fertilizer_kgs_per_hectare">Fertilizer (Kgs per hectare)</string>
+    <string name="fertilizer_percent_production">Fertilizer (% of Production)</string>
 </resources>
