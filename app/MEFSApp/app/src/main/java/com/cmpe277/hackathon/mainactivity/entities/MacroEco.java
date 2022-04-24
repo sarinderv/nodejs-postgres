@@ -34,7 +34,7 @@ public class MacroEco {
 
     @ColumnInfo(name="gdpCurrentUSD")
     @Nullable
-    public Integer gdp_current_usd;
+    public Double gdp_current_usd;
     @ColumnInfo(name="currentAccountBalance")
     @Nullable
     public Double current_account_balance;

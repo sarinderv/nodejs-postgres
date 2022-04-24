@@ -16,7 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends AppCompatActivity  {
 
     private ActivityDashboardBinding binding;
     AppDatabase db;
