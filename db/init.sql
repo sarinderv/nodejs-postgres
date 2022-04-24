@@ -26,7 +26,7 @@ INSERT INTO quote (id, quote, author) VALUES
 (17, 'The only way to learn a new programming language is by writing programs in it.', 'Dennis Ritchie');
 
 CREATE TABLE macroeconomic(
-   year                      INTEGER  NOT NULL PRIMARY KEY 
+   year                      INTEGER 
   ,country                   VARCHAR(5)
   ,gdpCurrentUSD             INTEGER 
   ,gdpAnnualGrowthPercentage NUMERIC(10,6)
@@ -34,6 +34,9 @@ CREATE TABLE macroeconomic(
   ,fdiNetUSD                 INTEGER 
   ,fdiNetInflowsPercentage   NUMERIC(9,6)
   ,fdiNetOutflowsPercentage  NUMERIC(9,6)
+  ,created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+  ,updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+  ,PRIMARY KEY(year, country)
 );
 INSERT INTO macroeconomic(year,country,gdpCurrentUSD,gdpAnnualGrowthPercentage,currentAccountBalance,fdiNetUSD,fdiNetInflowsPercentage,fdiNetOutflowsPercentage) VALUES (1960,'India',37029883875,3.722743,NULL,NULL,NULL,NULL);
 INSERT INTO macroeconomic(year,country,gdpCurrentUSD,gdpAnnualGrowthPercentage,currentAccountBalance,fdiNetUSD,fdiNetInflowsPercentage,fdiNetOutflowsPercentage) VALUES (1961,'India',39232435784,2.931128,NULL,NULL,NULL,NULL);
@@ -220,12 +223,196 @@ INSERT INTO macroeconomic(year,country,gdpCurrentUSD,gdpAnnualGrowthPercentage,c
 INSERT INTO macroeconomic(year,country,gdpCurrentUSD,gdpAnnualGrowthPercentage,currentAccountBalance,fdiNetUSD,fdiNetInflowsPercentage,fdiNetOutflowsPercentage) VALUES (2020,'USA',20936600000000,NULL,NULL,NULL,NULL,1.487575);
 
 CREATE TABLE agricultural (
-   year                      INTEGER  NOT NULL PRIMARY KEY 
-  ,country                   VARCHAR(5)
-  ,gdpCurrentUSD             INTEGER 
-  ,gdpAnnualGrowthPercentage NUMERIC(10,6)
-  ,currentAccountBalance     NUMERIC(9,6)
-  ,fdiNetUSD                 INTEGER 
-  ,fdiNetInflowsPercentage   NUMERIC(9,6)
-  ,fdiNetOutflowsPercentage  NUMERIC(9,6)
+   year                             INTEGER NOT NULL
+  ,country                          VARCHAR(5)
+  ,manufactoringPercentageOfGDP     NUMERIC(9,6)
+  ,agrValueAdded                    NUMERIC(9,6)
+  ,fertilizerConsumptionPerHectare  NUMERIC(9,6)
+  ,fertilizerConsumptionPercentage  NUMERIC(9,6)
+  ,created_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+  ,updated_at timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+  ,PRIMARY KEY(year, country)
 );
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1960,'China',NULL,NULL,NULL,NULL);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1961,'China',NULL,1.40000001,7.04082324,193.617021);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1962,'China',NULL,4.5,9.59844811,175.150443);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1963,'China',NULL,11.3,12.1182084,160.282776);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1964,'China',NULL,12.9,16.328319,141.399663);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1965,'China',NULL,9.7,25.4152921,136.406496);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1966,'China',NULL,7.20000001,36.4604269,142.709133);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1967,'China',NULL,1.9,26.5677641,146.496469);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1968,'China',NULL,-1.6,26.6859354,200.595238);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1969,'China',NULL,0.79999999,34.5458523,174.748491);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1970,'China',NULL,7.70000001,44.0404929,167.248577);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1971,'China',NULL,1.9,45.8317442,141.85772);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1972,'China',NULL,-0.9,52.9111627,132.639029);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1973,'China',NULL,9,65.2887119,132.561201);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1974,'China',NULL,4.1,56.1738097,124.652359);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1975,'China',NULL,2.00000001,70.0672898,123.075265);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1976,'China',NULL,-1.8,65.777116,115.926327);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1977,'China',NULL,-2.2,93.7540418,120.922812);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1978,'China',NULL,-1.1131209,111.714547,120.243565);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1979,'China',NULL,6.13443148,134.749311,119.125803);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1980,'China',NULL,-1.4824696,158.172854,121.004829);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1981,'China',NULL,6.98253441,155.332192,118.638428);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1982,'China',NULL,11.5288243,160.034163,122.618932);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1983,'China',NULL,8.32589347,172.449121,129.625662);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1984,'China',NULL,12.8806135,174.844872,131.860216);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1985,'China',NULL,1.84387945,142.996648,125.165702);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1986,'China',NULL,3.31868729,142.907111,121.198044);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1987,'China',NULL,4.70418469,187.637111,132.947554);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1988,'China',NULL,2.5439331,208.253051,142.468394);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1989,'China',NULL,3.07499973,206.925085,138.505343);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1990,'China',NULL,7.32773214,219.0993,142.365653);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1991,'China',NULL,2.35353019,236.242782,147.998763);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1992,'China',NULL,4.65100302,236.334796,140.707989);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1993,'China',NULL,4.64917941,205.642199,126.081539);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1994,'China',NULL,3.94554574,237.670268,134.747266);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1995,'China',NULL,4.94264254,295.924614,140.359307);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1996,'China',NULL,5.0398939,299.886659,132.866724);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1997,'China',NULL,3.43664045,297.839524,132.905268);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1998,'China',NULL,3.43299457,299.397945,125.913691);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1999,'China',NULL,2.7313733,304.496333,123.601403);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2000,'China',NULL,2.32851804,285.94478,119.973872);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2001,'China',NULL,2.63807124,293.915488,118.125187);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2002,'China',NULL,2.69994655,335.814206,126.681668);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2003,'China',NULL,2.37205637,330.803748,113.231994);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2004,'China',31.97507,6.10501997,354.430603,110.547787);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2005,'China',32.0939243,5.0739144,376.8997,115.194927);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2006,'China',32.4523281,4.7552783,376.739684,110.068781);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2007,'China',32.3833531,3.5236499,387.151299,101.167836);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2008,'China',32.1194116,5.15600467,374.217845,98.6234588);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2009,'China',31.5962381,4.00242578,385.4265,96.103796);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2010,'China',31.6128217,4.25106969,424.418776,93.4717823);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2011,'China',32.0647912,4.17428925,440.832259,93.933474);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2012,'China',31.5285779,4.46654196,450.802943,94.416669);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2013,'China',30.6710081,3.80719983,449.052448,93.160434);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2014,'China',30.3964442,4.05046824,464.827574,87.8942327);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2015,'China',28.9516706,3.89852147,464.619949,85.2261006);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2016,'China',28.0694422,3.27781356,463.187015,88.139681);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2017,'China',28.1089369,3.961291,421.46775,90.0673586);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2018,'China',27.8410112,3.4829175,393.215457,90.0626181);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2019,'China',26.7747218,3.08555309,NULL,NULL);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2020,'China',26.1759067,3,NULL,NULL);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1960,'India',14.7501181,NULL,NULL,NULL);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1961,'India',15.3538365,0.08420744,2.17128994,153.983405);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1962,'India',15.8632981,-1.9890988,2.88576899,160.074196);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1963,'India',15.7523884,2.33925222,3.45399124,166.395409);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1964,'India',14.85074,9.2242747,4.90198565,206.610908);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1965,'India',15.0109078,-11.042197,4.95904333,219.967535);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1966,'India',14.503993,-1.4225792,6.93990794,242.049703);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1967,'India',13.2318613,14.8708722,9.63199399,252.419223);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1968,'India',13.522788,-0.158279,10.9996314,226.835867);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1969,'India',14.1464716,6.42751614,12.3893584,207.691502);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1970,'India',14.4565451,7.0921654,14.054559,212.766359);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1971,'India',14.9822867,-1.8773667,16.6303613,214.344494);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1972,'India',15.1025494,-5.0184798,17.2792878,199.877239);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1973,'India',15.0152853,7.20190655,17.6256178,206.526484);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1974,'India',16.3459134,-1.5233569,15.9336475,169.541442);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1975,'India',15.8384867,12.8897837,21.5882549,191.158286);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1976,'India',16.2658888,-5.7781828,21.0839396,145.600205);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1977,'India',16.0808689,10.0362538,26.5076299,160.314972);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1978,'India',17.0964405,2.30250677,31.4324396,173.052277);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1979,'India',17.8520345,-12.77469,32.2612026,175.476721);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1980,'India',16.7523758,12.8882253,33.9727609,183.053203);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1981,'India',16.7704438,4.6016733,37.3489982,148.029389);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1982,'India',16.3699959,-0.2808349,35.9304363,132.351481);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1983,'India',16.6644547,10.1209741,40.7756311,145.032609);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1984,'India',16.7078036,1.58509237,48.8907089,152.249667);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1985,'India',16.4180129,0.31427327,52.9864253,150.141679);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1986,'India',16.2215838,-0.4094844,58.8559994,135.564418);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1987,'India',16.2095494,-1.5877966,51.1179192,116.262331);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1988,'India',16.1015349,15.6396475,66.0964708,119.232759);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1989,'India',16.9028459,1.18915474,69.210771,132.118677);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1990,'India',16.5975964,4.01509581,73.5230241,132.502493);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1991,'India',15.6762602,-1.9524882,77.9993198,128.751462);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1992,'India',15.8007998,6.65100678,74.7016644,124.391689);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1993,'India',15.9157121,3.32270683,76.1767372,135.275568);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1994,'India',16.7641381,4.71598014,83.4558929,129.282938);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1995,'India',17.8658506,-0.6953771,85.7028553,122.323912);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1996,'India',17.5963408,9.92029924,89.0423288,128.156747);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1997,'India',16.5185785,-2.5537278,100.172561,122.984939);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1998,'India',15.719316,6.32045446,104.067952,122.865994);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1999,'India',15.1805367,2.66912734,112.17102,126.089684);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2000,'India',15.927023,-0.0076181,103.786118,113.68746);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2001,'India',15.3070213,6.00708957,108.182199,118.594593);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2002,'India',15.5587017,-6.6042345,100.329055,113.401275);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2003,'India',15.5873867,9.04858116,105.177204,119.961055);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2004,'India',15.8272457,0.18353277,115.27151,121.486324);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2005,'India',15.973017,4.80936405,127.614592,132.896009);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2006,'India',17.3036533,2.93879549,136.403922,152.551054);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2007,'India',16.8645678,5.50647663,142.835226,172.230339);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2008,'India',17.0986742,-0.2441943,153.349391,188.965018);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2009,'India',17.1435777,-0.880233,167.457296,181.231009);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2010,'India',17.0299343,8.79175829,179.035877,171.491764);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2011,'India',16.1393374,6.39780625,180.748291,171.196237);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2012,'India',15.816923,1.48746049,163.122022,159.540279);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2013,'India',15.2530227,5.57047566,156.495698,149.517842);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2014,'India',15.0655701,-0.2164482,163.498079,154.546114);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2015,'India',15.5838546,0.64959931,171.034933,149.441673);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2016,'India',15.1622371,6.79755863,165.89799,144.72852);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2017,'India',15.0182388,6.60592152,170.001151,146.530556);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2018,'India',14.8532644,2.56095155,175.015344,152.701188);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2019,'India',13.3274419,4.31476632,NULL,NULL);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2020,'India',12.961685,3.03352529,NULL,NULL);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1960,'USA',NULL,NULL,NULL,NULL);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1961,'USA',NULL,41.3342781,NULL,92.0163994);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1962,'USA',NULL,46.7255367,NULL,93.6281842);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1963,'USA',NULL,51.0648342,NULL,92.3455845);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1964,'USA',NULL,55.0294808,NULL,92.1036075);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1965,'USA',NULL,61.038199,NULL,90.536841);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1966,'USA',NULL,69.2435058,NULL,93.2007828);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1967,'USA',NULL,76.2348038,NULL,94.6423494);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1968,'USA',NULL,76.8567782,NULL,97.6147418);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1969,'USA',NULL,76.1347999,NULL,97.5626631);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1970,'USA',NULL,80.6353255,NULL,96.3880433);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1971,'USA',NULL,82.8753589,NULL,98.0701303);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1972,'USA',NULL,85.7231308,NULL,96.4481647);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1973,'USA',NULL,91.5438433,NULL,96.452858);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1974,'USA',NULL,88.7037792,NULL,96.6335871);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1975,'USA',NULL,95.6487429,NULL,97.8860238);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1976,'USA',NULL,105.194879,NULL,102.153906);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1977,'USA',NULL,102.81233,NULL,101.212907);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1978,'USA',NULL,104.885325,NULL,94.6439885);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1979,'USA',NULL,110.179319,NULL,92.3978026);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1980,'USA',NULL,112.830981,NULL,91.1041271);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1981,'USA',NULL,106.998034,NULL,104.916436);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1982,'USA',NULL,93.2429036,NULL,97.3572473);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1983,'USA',NULL,98.8041362,NULL,94.5563641);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1984,'USA',NULL,105.161785,NULL,88.4347126);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1985,'USA',NULL,98.5597666,NULL,101.709671);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1986,'USA',NULL,93.1496548,NULL,81.8563436);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1987,'USA',NULL,94.8042593,NULL,77.474296);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1988,'USA',NULL,95.6284274,NULL,75.842081);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1989,'USA',NULL,98.800156,NULL,79.1859396);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1990,'USA',NULL,100.441282,NULL,76.8450926);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1991,'USA',NULL,100.797279,NULL,73.0166803);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1992,'USA',NULL,102.803039,NULL,73.8439282);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1993,'USA',NULL,108.88553,NULL,78.0950271);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1994,'USA',NULL,108.057702,NULL,75.90992);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1995,'USA',NULL,108.7728,NULL,77.3015096);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1996,'USA',NULL,112.872083,NULL,74.943546);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1997,'USA',16.0871774,113.86286,NULL,83.466898);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1998,'USA',15.7743253,112.341103,NULL,84.8611554);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (1999,'USA',15.4533061,111.860226,NULL,95.3829621);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2000,'USA',15.1168785,108.751459,NULL,106.152796);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2001,'USA',13.9224196,110.130265,NULL,102.811241);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2002,'USA',13.4454191,112.517278,NULL,109.310822);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2003,'USA',13.3160831,120.204496,NULL,126.150659);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2004,'USA',13.1801904,121.60803,NULL,122.758081);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2005,'USA',12.9930744,117.775214,NULL,120.374948);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2006,'USA',12.9941172,123.438462,NULL,124.898067);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2007,'USA',12.7824706,123.345323,NULL,120.423886);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2008,'USA',12.2557022,113.39941,NULL,122.917588);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2009,'USA',11.731472,107.735546,NULL,122.63736);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2010,'USA',11.9326849,115.794892,NULL,119.519188);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2011,'USA',11.9522107,128.360861,NULL,129.17156);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2012,'USA',11.8522068,132.672949,NULL,131.424268);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2013,'USA',11.8067999,134.963658,NULL,134.709798);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2014,'USA',11.6524242,132.357294,NULL,133.283805);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2015,'USA',11.6336773,127.744399,NULL,129.489009);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2016,'USA',11.171319,129.309764,NULL,127.182808);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2017,'USA',11.1290032,131.990997,NULL,125.08552);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2018,'USA',11.1977035,128.765169,NULL,118.103893);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2019,'USA',10.9262489,5.3839676,NULL,NULL);
+INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES (2020,'USA',NULL,NULL,NULL,NULL);

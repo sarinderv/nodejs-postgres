@@ -5,7 +5,7 @@ const config = require('../config');
 async function getMultiple(page = 1) {
   const offset = helper.getOffset(page, config.listPerPage);
   const rows = await db.query(
-    'SELECT year, country, gdpCurrentUSD, gdpAnnualGrowthPercentage, currentAccountBalance, fdiNetUSD, fdiNetInflowsPercentage, fdiNetOutflowsPercentage FROM agricultural OFFSET $1 LIMIT $2', 
+    'SELECT year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage FROM agricultural OFFSET $1 LIMIT $2', 
     [offset, config.listPerPage]
   );
   const data = helper.emptyOrRows(rows);
@@ -46,8 +46,8 @@ async function create(agricultural){
   validateCreate(agricultural);
 
   const result = await db.query(
-    'INSERT INTO agricultural(year, country, gdpCurrentUSD, gdpAnnualGrowthPercentage, currentAccountBalance, fdiNetUSD, fdiNetInflowsPercentage, fdiNetOutflowsPercentage) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
-    [agricultural.year, agricultural.country, agricultural.usd]
+    'INSERT INTO agricultural(year,country,manufactoringPercentageOfGDP,agrValueAdded,fertilizerConsumptionPerHectare,fertilizerConsumptionPercentage) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+    [agricultural.year,agricultural.country,agricultural.manufactoringPercentageOfGDP,agricultural.agrValueAdded,agricultural.fertilizerConsumptionPerHectare,agricultural.fertilizerConsumptionPercentage]
   );
   let message = 'Error in creating agricultural row';
 
