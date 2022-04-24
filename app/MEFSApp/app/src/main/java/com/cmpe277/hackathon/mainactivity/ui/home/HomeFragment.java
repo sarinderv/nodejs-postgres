@@ -61,9 +61,9 @@ Set set;
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         Context context = getContext();
-        ChoiceSheetDialog bottomSheet = new ChoiceSheetDialog();
-        bottomSheet.show(getParentFragmentManager(),
-                "ModalBottomSheet");
+//        ChoiceSheetDialog bottomSheet = new ChoiceSheetDialog();
+//        bottomSheet.show(getParentFragmentManager(),
+//                "ModalBottomSheet");
         String[] items = new String[]{"USA", "India", "China"};
         Map<String, List<DataEntry>> countryData = new HashMap<>(); // country->data hashmap
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, items);

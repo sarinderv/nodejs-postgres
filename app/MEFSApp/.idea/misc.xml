@@ -21,7 +21,7 @@
         <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_macroeconomic.xml" value="0.321875" />
-        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.5145833333333333" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.33" />
       </map>
     </option>
   </component>

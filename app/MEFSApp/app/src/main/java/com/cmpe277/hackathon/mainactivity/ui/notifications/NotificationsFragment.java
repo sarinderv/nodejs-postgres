@@ -2,7 +2,6 @@ package com.cmpe277.hackathon.mainactivity.ui.notifications;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,15 +28,12 @@ import com.anychart.enums.Anchor;
 import com.anychart.enums.HoverMode;
 import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
-import com.cmpe277.hackathon.mainactivity.ChoiceSheetDialog;
 import com.cmpe277.hackathon.mainactivity.R;
 import com.cmpe277.hackathon.mainactivity.adapter.AgriResponseConverter;
-import com.cmpe277.hackathon.mainactivity.adapter.MacroResponseConverter;
 import com.cmpe277.hackathon.mainactivity.client.RetrofitClientInstance;
-import com.cmpe277.hackathon.mainactivity.databinding.FragmentHomeBinding;
+import com.cmpe277.hackathon.mainactivity.databinding.FragmentNotificationsBinding;
 import com.cmpe277.hackathon.mainactivity.dto.AgriAPIResponse;
 import com.cmpe277.hackathon.mainactivity.models.AgriDataPoint;
-import com.cmpe277.hackathon.mainactivity.models.MacroEconomicDataPoint;
 import com.cmpe277.hackathon.mainactivity.service.IMacroService;
 import com.cmpe277.hackathon.mainactivity.ui.home.HomeViewModel;
 
@@ -52,7 +48,7 @@ import retrofit2.Response;
 
 public class NotificationsFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private @NonNull FragmentNotificationsBinding binding;
     private Cartesian cartesian;
     Set set;
     List<AgriDataPoint> points;
@@ -61,12 +57,12 @@ public class NotificationsFragment extends Fragment {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         Context context = getContext();
-        ChoiceSheetDialog bottomSheet = new ChoiceSheetDialog();
-        bottomSheet.show(getParentFragmentManager(),
-                "ModalBottomSheet");
+//        ChoiceSheetDialog bottomSheet = new ChoiceSheetDialog();
+//        bottomSheet.show(getParentFragmentManager(),
+//                "ModalBottomSheet");
         String[] items = new String[]{"USA", "India", "China"};
         Map<String, List<DataEntry>> countryData = new HashMap<>(); // country->data hashmap
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, items);
