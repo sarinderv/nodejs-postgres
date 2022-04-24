@@ -3,8 +3,10 @@ package com.cmpe277.hackathon.mainactivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.cmpe277.hackathon.mainactivity.adapter.MacroResponseConverter;
 import com.cmpe277.hackathon.mainactivity.client.RetrofitClientInstance;
 import com.cmpe277.hackathon.mainactivity.dto.MacroAPIResponse;
+import com.cmpe277.hackathon.mainactivity.models.MacroEconomicDataPoint;
 import com.cmpe277.hackathon.mainactivity.service.IMacroService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,6 +17,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.cmpe277.hackathon.mainactivity.databinding.ActivityDashboardBinding;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,7 +57,13 @@ public class Dashboard extends AppCompatActivity {
         call.enqueue(new Callback<MacroAPIResponse>() {
             @Override
             public void onResponse(Call<MacroAPIResponse> call, Response<MacroAPIResponse> response) {
+                MacroResponseConverter converter=new MacroResponseConverter();
+                List<MacroEconomicDataPoint> points=converter.getDataPoints(response.body().getData());
+                points.stream().forEach((obj)->{
+                    System.out.println(obj.toString());
+                });
                 Toast.makeText(Dashboard.this, "Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
