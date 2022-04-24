@@ -43,6 +43,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-runtime:2.4.1'
 
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     def room_version = "2.4.2"
 
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'

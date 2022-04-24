@@ -2,11 +2,14 @@ package com.cmpe277.hackathon.mainactivity.ui.home;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -48,6 +51,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private Cartesian cartesian;
 Set set;
+    List<MacroEconomicDataPoint> points;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -71,11 +75,12 @@ Set set;
             @Override
             public void onResponse(Call<MacroAPIResponse> call, Response<MacroAPIResponse> response) {
                 MacroResponseConverter converter=new MacroResponseConverter();
-                List<MacroEconomicDataPoint> points=converter.getDataPoints(response.body().getData());
+                points=converter.getDataPoints(response.body().getData());
 
                 // on REST response, populate the country->data hashmap
                 for (String country : items) {
                     List<DataEntry> data = new ArrayList<>();
+
                     points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase(country)).forEach((obj)->{
                         data.add(new ValueDataEntry(obj.getYear(), obj.getGdp_current_usd()));
                     });
@@ -90,8 +95,9 @@ Set set;
                         Toast.makeText(context, "Country: "+ items[position], Toast.LENGTH_SHORT).show();
                        // cartesian.column(countryData.get(items[position]));
                         List<DataEntry> entries=countryData.get(items[position]);
+                        String country = dropdown.getSelectedItem().toString();
                         //cartesian = newCartesian(entries, "GDP by Year");
-                        set.data(entries);
+                        updateChart(root,context,country);
                     }
 
                     @Override
@@ -108,6 +114,14 @@ Set set;
 
                 cartesian = newCartesian(series1Data, "GDP by Year");
                 anyChartView.setChart(cartesian);
+                EditText formed=(EditText)root.findViewById(R.id.fromyear);
+                formed.setText("1960");
+                EditText toyear=(EditText)root.findViewById(R.id.toyear);
+                toyear.setText("2020");
+                Button btn=(Button)root.findViewById(R.id.apply);
+                btn.setOnClickListener((view)->{
+                   updateChart(root,context,country);
+                });
             }
 
             @Override
@@ -119,7 +133,26 @@ Set set;
 
         return root;
     }
-
+    public void updateChart(View root,Context context,String country){
+        String fromDateET=((EditText)root.findViewById(R.id.fromyear)).getText().toString();
+        String toDateET=((EditText)root.findViewById(R.id.toyear)).getText().toString();
+        int fromYear=1960;
+        int toYear=2020;
+        if(!fromDateET.equals(""))
+            fromYear=Integer.parseInt(fromDateET);
+        if(!fromDateET.equals(""))
+            toYear=Integer.parseInt(toDateET);
+        Toast.makeText(context, "Dates: "+ fromYear+" "+toYear, Toast.LENGTH_SHORT).show();
+        // cartesian.column(countryData.get(items[position]));
+        List<DataEntry> entries=new ArrayList<>();
+        final int fromYf=fromYear;
+        final int toYf=toYear;
+        points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase(country)).forEach((obj)->{
+            if(obj.getYear()>=fromYf&&obj.getYear()<=toYf)
+                entries.add(new ValueDataEntry(obj.getYear(), obj.getGdp_current_usd()));
+        });
+        set.data(entries);
+    }
     private Cartesian newCartesian(Mapping seriesData, String title) {
         Cartesian cartesian =  AnyChart.column();
         Column column = cartesian.column(seriesData);

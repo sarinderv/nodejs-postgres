@@ -18,4 +18,5 @@
     <string name="fdi_net_in">FDI Inflows (USD)</string>
     <string name="fdi_net_out">FDI Outflows (USD)</string>
     <string name="show_button"> Show </string>
+    <string name="apply_btn"> apply </string>
 </resources>
