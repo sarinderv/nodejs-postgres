@@ -89,13 +89,13 @@ Set set;
                     });
                     countryData.put(country, data);
                 }
-                Toast.makeText(context, "MacroEconomic data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "MacroEconomic data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
 
                 dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                         // if country changed then get the new data and refresh the chart, only the y-axis needs to be refreshed
-                        Toast.makeText(context, "Country: "+ items[position], Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, "Country: "+ items[position], Toast.LENGTH_SHORT).show();
                        // cartesian.column(countryData.get(items[position]));
                         List<DataEntry> entries=countryData.get(items[position]);
                         String country = dropdown.getSelectedItem().toString();
@@ -145,7 +145,7 @@ Set set;
             fromYear=Integer.parseInt(fromDateET);
         if(!fromDateET.equals(""))
             toYear=Integer.parseInt(toDateET);
-        Toast.makeText(context, "Dates: "+ fromYear+" "+toYear, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Dates: "+ fromYear+" "+toYear, Toast.LENGTH_SHORT).show();
         // cartesian.column(countryData.get(items[position]));
         List<DataEntry> entries=new ArrayList<>();
         final int fromYf=fromYear;
