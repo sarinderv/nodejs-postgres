@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.cmpe277.hackathon.mainactivity"
-        minSdk 30
+        minSdk 29
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -44,6 +44,8 @@ dependencies {
 
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
     def room_version = "2.4.2"
+
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
