@@ -6,12 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <com.anychart.AnyChartView
+        android:id="@+id/any_chart_view"
+        android:layout_width="386dp"
+        android:layout_height="415dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/gdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apply"
+        app:layout_constraintVertical_bias="0.724">
+
+    </com.anychart.AnyChartView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="84dp"
+        android:text="Annotations"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toEndOf="@+id/fdiOut" />
+
     <Button
         android:id="@+id/apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="52dp"
         android:text="@string/apply_btn"
         app:layout_constraintStart_toEndOf="@+id/toyear"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,13 +48,13 @@
         android:id="@+id/toyear"
         android:layout_width="64dp"
         android:layout_height="42dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="60dp"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintStart_toEndOf="@+id/fromyear"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <Spinner
         android:id="@+id/country_spinner"
@@ -37,7 +65,7 @@
         android:layout_marginEnd="8dp"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.824"
         app:layout_constraintStart_toEndOf="@+id/apply"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -46,7 +74,7 @@
         android:id="@+id/fromyear"
         android:layout_width="64dp"
         android:layout_height="42dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="96dp"
         android:layout_marginTop="60dp"
         android:ems="10"
         android:inputType="number"
@@ -54,27 +82,11 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-    <com.anychart.AnyChartView
-        android:id="@+id/any_chart_view"
-        android:layout_width="369dp"
-        android:layout_height="431dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/gdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apply"
-        app:layout_constraintVertical_bias="0.0">
-
-    </com.anychart.AnyChartView>
-
     <CheckBox
         android:id="@+id/gdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="564dp"
         android:checked="true"
         android:text="GDP (USD)"
@@ -85,18 +97,18 @@
         android:id="@+id/fdiOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
         android:text="FDI Outflows"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/importExport"
         app:layout_constraintTop_toBottomOf="@+id/fdiIn"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/fdiIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="564dp"
         android:text="FDI Inflows"
         app:layout_constraintStart_toEndOf="@+id/gdp"
@@ -106,12 +118,11 @@
         android:id="@+id/importExport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
+        android:layout_marginStart="12dp"
         android:text="Import/Export"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gdp"
-        app:layout_constraintVertical_bias="0.042" />
-
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
