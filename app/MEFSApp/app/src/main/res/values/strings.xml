@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">MEFS App</string>
+    <string-array name="countries">
+        <item>China</item>
+        <item>India</item>
+        <item>USA</item>
+    </string-array>
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_home">Macro Economic</string>
     <string name="title_dashboard">Agriculture</string>
