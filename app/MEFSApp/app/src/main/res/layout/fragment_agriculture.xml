@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.macroeconomic.MacroeconomicFragment">
+    tools:context=".ui.agriculture.AgricultureFragment">
 
     <CheckBox
-        android:id="@+id/checkbox_gdp_growth_rage"
+        android:id="@+id/checkbox_agricultural_contribution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/gdp_growth_rage"
-        app:layout_constraintBottom_toTopOf="@+id/checkbox_gdp_current_usd"
+        android:text="@string/agricultural_contribution"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_manufacturing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,58 +19,47 @@
         app:layout_constraintVertical_bias="0.821" />
 
     <CheckBox
-        android:id="@+id/checkbox_gdp_current_usd"
+        android:id="@+id/checkbox_manufacturing"
         android:layout_width="158dp"
         android:layout_height="47dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/gdp_current_usd"
-        app:layout_constraintBottom_toTopOf="@+id/checkbox_current_account_balance"
+        android:text="@string/manufacturing"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_annual_percent_growth"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkbox_current_account_balance"
+        android:id="@+id/checkbox_annual_percent_growth"
         android:layout_width="162dp"
         android:layout_height="40dp"
         android:layout_marginBottom="36dp"
-        android:text="@string/current_account_balance"
-        app:layout_constraintBottom_toTopOf="@+id/checkbox_fdi_net"
+        android:text="@string/annual_percent_growth"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_fertilizer_kgs_per_hectare"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkbox_fdi_net"
+        android:id="@+id/checkbox_fertilizer_kgs_per_hectare"
         android:layout_width="165dp"
         android:layout_height="51dp"
         android:layout_marginBottom="44dp"
-        android:text="@string/fdi_net"
-        app:layout_constraintBottom_toTopOf="@+id/checkbox_fdi_net_in"
+        android:text="@string/fertilizer_kgs_per_hectare"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_fertilizer_percent_production"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkbox_fdi_net_in"
+        android:id="@+id/checkbox_fertilizer_percent_production"
         android:layout_width="167dp"
         android:layout_height="53dp"
         android:layout_marginBottom="32dp"
-        android:text="@string/fdi_net_in"
-        app:layout_constraintBottom_toTopOf="@+id/checkbox_fdi_net_out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkbox_fdi_net_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="156dp"
-        android:text="@string/fdi_net_out"
+        android:text="@string/fertilizer_percent_production"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -82,5 +71,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_fdi_net_out" />
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_fertilizer_percent_production" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.cmpe277.hackathon.mainactivity.ui.home;
+package com.cmpe277.hackathon.mainactivity.ui.agriculture;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.cmpe277.hackathon.mainactivity.databinding.FragmentHomeBinding;
+import com.cmpe277.hackathon.mainactivity.databinding.FragmentAgricultureBinding;
 
-public class HomeFragment extends Fragment {
+public class AgricultureFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentAgricultureBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        AgricultureViewModel agricultureViewModel =
+                new ViewModelProvider(this).get(AgricultureViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentAgricultureBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        //final TextView textView = binding.;
+        //agricultureViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

@@ -7,16 +7,46 @@
     tools:context=".ui.notifications.NotificationsFragment">
 
     <TextView
-        android:id="@+id/text_notifications"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/title_textview"
+        android:layout_width="296dp"
+        android:layout_height="76dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="46dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/border"
+        android:text="Macroeconomic Researcher Food Security Time Series Dashboard"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/spinner_countries"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintStart_toEndOf="@+id/main_logo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_width="71dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:src="@drawable/logo_icon"
+        app:layout_constraintEnd_toStartOf="@+id/title_textview"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_textview" />
+
+    <Spinner
+        android:id="@+id/spinner_countries"
+        android:layout_width="84dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="528dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/title_textview"
+        app:layout_constraintTop_toBottomOf="@+id/title_textview" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

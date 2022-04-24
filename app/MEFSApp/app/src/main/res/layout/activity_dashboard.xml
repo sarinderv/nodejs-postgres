@@ -19,40 +19,52 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-    <ImageButton
-        android:id="@+id/chartImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="572dp"
-        android:layout_marginEnd="186dp"
-        android:src="@drawable/chart_icon"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_dashboard"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
 
-    <ImageButton
-        android:id="@+id/cropImageButton"
-        android:layout_width="103dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="148dp"
-        android:src="@drawable/crop_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/chartImageButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/chartImageButton"
-        app:layout_constraintTop_toTopOf="@+id/chartImageButton"
-        app:layout_constraintVertical_bias="0.0" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/chartImageButton"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginTop="572dp"-->
+<!--        android:layout_marginEnd="186dp"-->
+<!--        android:src="@drawable/chart_icon"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/imageButton"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="103dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="28dp"
-        android:src="@drawable/money_icon"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/chartImageButton" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/cropImageButton"-->
+<!--        android:layout_width="103dp"-->
+<!--        android:layout_height="73dp"-->
+<!--        android:layout_marginEnd="148dp"-->
+<!--        android:src="@drawable/crop_icon"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/chartImageButton"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/chartImageButton"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/chartImageButton"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--    <ImageButton-->
+<!--        android:id="@+id/imageButton"-->
+<!--        android:layout_width="103dp"-->
+<!--        android:layout_height="73dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginBottom="28dp"-->
+<!--        android:src="@drawable/money_icon"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/nav_view"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/chartImageButton" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,16 @@
-package com.cmpe277.hackathon.mainactivity.ui.home;
+package com.cmpe277.hackathon.mainactivity.ui.agriculture;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class AgricultureViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public AgricultureViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is Agriculture fragment");
     }
 
     public LiveData<String> getText() {
