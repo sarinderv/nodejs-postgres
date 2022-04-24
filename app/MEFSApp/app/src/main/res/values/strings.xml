@@ -6,10 +6,12 @@
         <item>USA</item>
     </string-array>
     <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_agriculture">Agriculture</string>
     <string name="title_macroeconomic">Macroeconomics</string>
+    <string name="title_home">Macroeconomics</string>
     <string name="agriculture">Agriculture</string>
     <string name="trade">Trade</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_notifications">Trade</string>
     <string name="macroeconomic_researcher_btn">Macroeconomic Researcher</string>
     <string name="government_official_btn">Government Official</string>
     <string name="gdp_growth_rage">GDP (Growth Rage)</string>

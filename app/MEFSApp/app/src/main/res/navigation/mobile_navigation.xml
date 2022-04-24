@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_dashboard">
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.cmpe277.hackathon.mainactivity.ui.agriculture.AgricultureFragment"
-        android:label="@string/agriculture"
-        tools:layout="@layout/fragment_agriculture" />
+        android:name="com.cmpe277.hackathon.mainactivity.ui.macroeconomic.MacroeconomicFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_macroeconomic" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.cmpe277.hackathon.mainactivity.ui.trade.TradeFragment"
-        android:label="@string/trade"
-        tools:layout="@layout/fragment_trade" />
+        android:name="com.cmpe277.hackathon.mainactivity.ui.agriculture.AgricultureFragment"
+        android:label="@string/title_agriculture"
+        tools:layout="@layout/fragment_agriculture" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.cmpe277.hackathon.mainactivity.ui.notifications.NotificationsFragment"
+        android:name="com.cmpe277.hackathon.mainactivity.ui.trade.TradeFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_trade" />
 </navigation>

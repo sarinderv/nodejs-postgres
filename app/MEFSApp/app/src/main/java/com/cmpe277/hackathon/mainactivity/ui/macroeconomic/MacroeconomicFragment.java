@@ -2,12 +2,20 @@ package com.cmpe277.hackathon.mainactivity.ui.macroeconomic;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.cmpe277.hackathon.mainactivity.R;
+import com.cmpe277.hackathon.mainactivity.databinding.FragmentAgricultureBinding;
+import com.cmpe277.hackathon.mainactivity.databinding.FragmentMacroeconomicBinding;
+import com.cmpe277.hackathon.mainactivity.ui.agriculture.AgricultureViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -22,23 +30,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class MacroeconomicFragment extends AppCompatActivity {
+public class MacroeconomicFragment extends Fragment {
     CheckBox checkbox_gdp_growth_rage, checkbox_gdp_current_usd, checkbox_current_account_balance,checkbox_fdi_net,checkbox_fdi_net_in, checkbox_fdi_net_out ;
     private LineChart lineChart;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private FragmentMacroeconomicBinding binding;
 
-        setContentView(R.layout.fragment_macroeconomic);
-        lineChart = findViewById(R.id.activity_linechart);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        MacroeconomicViewModel macroeconomicViewModel =
+                new ViewModelProvider(this).get(MacroeconomicViewModel.class);
 
-        checkbox_gdp_growth_rage =(CheckBox)findViewById(R.id.checkbox_gdp_growth_rage);
-        checkbox_gdp_current_usd =(CheckBox)findViewById(R.id.checkbox_gdp_current_usd);
-        checkbox_current_account_balance =(CheckBox)findViewById(R.id.checkbox_current_account_balance);
-        checkbox_fdi_net =(CheckBox)findViewById(R.id.checkbox_fdi_net);
-        checkbox_fdi_net_in =(CheckBox)findViewById(R.id.checkbox_fdi_net_in);
-        checkbox_fdi_net_out =(CheckBox)findViewById(R.id.checkbox_fdi_net_out);
+        binding = FragmentMacroeconomicBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        lineChart = root.findViewById(R.id.activity_linechart);
+
+        checkbox_gdp_growth_rage =(CheckBox)root.findViewById(R.id.checkbox_gdp_growth_rage);
+        checkbox_gdp_current_usd =(CheckBox)root.findViewById(R.id.checkbox_gdp_current_usd);
+        checkbox_current_account_balance =(CheckBox)root.findViewById(R.id.checkbox_current_account_balance);
+        checkbox_fdi_net =(CheckBox)root.findViewById(R.id.checkbox_fdi_net);
+        checkbox_fdi_net_in =(CheckBox)root.findViewById(R.id.checkbox_fdi_net_in);
+        checkbox_fdi_net_out =(CheckBox)root.findViewById(R.id.checkbox_fdi_net_out);
         configureLineChart();
+        return root;
     }
 
     public void Check(View v)
@@ -144,5 +158,10 @@ public class MacroeconomicFragment extends AppCompatActivity {
         LineData lineData = new LineData(dataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
+    }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
