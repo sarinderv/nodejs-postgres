@@ -44,6 +44,7 @@ import retrofit2.Response;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    private Cartesian cartesian;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -80,11 +81,6 @@ public class HomeFragment extends Fragment {
                 }
                 Toast.makeText(context, "MacroEconomic data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
 
-                String country = dropdown.getSelectedItem().toString();
-                List<DataEntry> data = countryData.get(country);
-                Cartesian cartesian = AnyChart.column();
-                Column column = cartesian.column(data);
-
                 dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -99,22 +95,9 @@ public class HomeFragment extends Fragment {
 
                 });
 
-                column.tooltip()
-                        .titleFormat("{%X}")
-                        .position(Position.CENTER_BOTTOM)
-                        .anchor(Anchor.CENTER_BOTTOM)
-                        .offsetX(0d)
-                        .offsetY(5d)
-                        .format("${%Value}{groupsSeparator: }");
-                cartesian.animation(true);
-                cartesian.title("GDP by Year");
-                cartesian.yScale().minimum(0d);
-                cartesian.yAxis(0).labels().format("{%seriesName}: {%value}{scale:(1)(1000)(1000)(1000)(1000)|( d)( th)( M)( B)( T)}");
-                cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
-                cartesian.interactivity().hoverMode(HoverMode.BY_X);
-                cartesian.xAxis(0).title("Product");
-                cartesian.yAxis(0).title("$(USD)");
-
+                String country = dropdown.getSelectedItem().toString();
+                List<DataEntry> data = countryData.get(country);
+                cartesian = newCartesian(data, "GDP by Year");
                 anyChartView.setChart(cartesian);
             }
 
@@ -126,6 +109,26 @@ public class HomeFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private Cartesian newCartesian(List<DataEntry> data, String title) {
+        Cartesian cartesian = AnyChart.column();
+        Column column = cartesian.column(data);
+        column.tooltip()
+                .titleFormat("{%X}")
+                .position(Position.CENTER_BOTTOM)
+                .anchor(Anchor.CENTER_BOTTOM)
+                .offsetX(0d)
+                .offsetY(5d)
+                .format("${%Value}{groupsSeparator: }");
+        cartesian.animation(true);
+        cartesian.title(title);
+        cartesian.yScale().minimum(0d);
+        cartesian.yAxis(0).labels().format("{%seriesName}: {%value}{scale:(1)(1000)(1000)(1000)(1000)|( d)( th)( M)( B)( T)}");
+        cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
+        cartesian.interactivity().hoverMode(HoverMode.BY_X);
+        cartesian.yAxis(0).title("$(USD)");
+        return cartesian;
     }
 
     @Override
