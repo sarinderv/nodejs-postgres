@@ -4,14 +4,17 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.cmpe277.hackathon.mainactivity.adapter.AgriResponseConverter;
+import com.cmpe277.hackathon.mainactivity.adapter.DebtResponseConverter;
 import com.cmpe277.hackathon.mainactivity.adapter.MacroResponseConverter;
 import com.cmpe277.hackathon.mainactivity.client.RetrofitClientInstance;
 import com.cmpe277.hackathon.mainactivity.database.AppDBHelper;
 import com.cmpe277.hackathon.mainactivity.database.AppDatabase;
 import com.cmpe277.hackathon.mainactivity.dto.AgriAPIResponse;
+import com.cmpe277.hackathon.mainactivity.dto.DebtAPIResponse;
 import com.cmpe277.hackathon.mainactivity.dto.MacroAPIResponse;
 import com.cmpe277.hackathon.mainactivity.entities.MacroEco;
 import com.cmpe277.hackathon.mainactivity.models.AgriDataPoint;
+import com.cmpe277.hackathon.mainactivity.models.DebtDataPoint;
 import com.cmpe277.hackathon.mainactivity.models.MacroEconomicDataPoint;
 import com.cmpe277.hackathon.mainactivity.service.IMacroService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -80,9 +83,9 @@ public class Dashboard extends AppCompatActivity {
                 MacroResponseConverter converter=new MacroResponseConverter();
                 List<MacroEconomicDataPoint> points=converter.getDataPoints(response.body().getData());
                 points.stream().forEach((obj)->{
-                    System.out.println(obj.toString());
+                  //  System.out.println(obj.toString());
                 });
-                Toast.makeText(Dashboard.this, "Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Dashboard.this, "macro Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -99,16 +102,35 @@ public class Dashboard extends AppCompatActivity {
                 AgriResponseConverter converter=new AgriResponseConverter();
                 List<AgriDataPoint> points=converter.getDataPoints(response.body().getData());
                 points.stream().forEach((obj)->{
-                    System.out.println(obj.toString());
+                   // System.out.println(obj.toString());
                 });
-                Toast.makeText(Dashboard.this, "Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Dashboard.this, "agri Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
 
             }
 
             @Override
             public void onFailure(Call<AgriAPIResponse> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(Dashboard.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Dashboard.this, "agri Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        Call<DebtAPIResponse> calld = service.getDebtDetails();
+        calld.enqueue(new Callback<DebtAPIResponse>() {
+            @Override
+            public void onResponse(Call<DebtAPIResponse> call, Response<DebtAPIResponse> response) {
+                DebtResponseConverter converter=new DebtResponseConverter();
+                List<DebtDataPoint> points=converter.getDataPoints(response.body().getData());
+                points.stream().forEach((obj)->{
+                    System.out.println(obj.toString());
+                });
+                Toast.makeText(Dashboard.this, "Debt Data loaded "+response.body().data.size(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<DebtAPIResponse> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(Dashboard.this, "DEbt Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
             }
         });
     }

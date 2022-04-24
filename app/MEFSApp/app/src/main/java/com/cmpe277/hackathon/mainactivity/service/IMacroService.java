@@ -1,6 +1,7 @@
 package com.cmpe277.hackathon.mainactivity.service;
 
 import com.cmpe277.hackathon.mainactivity.dto.AgriAPIResponse;
+import com.cmpe277.hackathon.mainactivity.dto.DebtAPIResponse;
 import com.cmpe277.hackathon.mainactivity.dto.MacroAPIResponse;
 
 import retrofit2.Call;
@@ -11,4 +12,6 @@ public interface IMacroService {
     Call<MacroAPIResponse> getMacroDetails();
     @GET("/agricultural")
     Call<AgriAPIResponse> getAgriDetails();
+    @GET("/debt")
+    Call<DebtAPIResponse> getDebtDetails();
 }

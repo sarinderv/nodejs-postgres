@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.cmpe277.hackathon.mainactivity.entities.AgriData;
+import com.cmpe277.hackathon.mainactivity.entities.DebtData;
 import com.cmpe277.hackathon.mainactivity.entities.MacroEco;
 import com.cmpe277.hackathon.mainactivity.models.UserType;
 import android.widget.TextView;
@@ -50,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("size db : "+agridata.size());
             agridata.stream().forEach((obj)->{
                 System.out.println("db agri : "+obj.toString());
+            });
+            List<DebtData> debtData=db.debtDao().getAllData();
+
+            System.out.println("size db : "+debtData.size());
+            debtData.stream().forEach((obj)->{
+                System.out.println("db debt : "+obj.toString());
             });
             runOnUiThread(()-> {
 
