@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 
 import android.widget.ImageButton;
+
+import com.cmpe277.hackathon.mainactivity.entities.AgriData;
+import com.cmpe277.hackathon.mainactivity.entities.MacroEco;
 import com.cmpe277.hackathon.mainactivity.models.UserType;
 import android.widget.TextView;
 
@@ -17,6 +20,8 @@ import android.widget.TextView;
 import com.cmpe277.hackathon.mainactivity.database.AppDBHelper;
 import com.cmpe277.hackathon.mainactivity.database.AppDatabase;
 import com.cmpe277.hackathon.mainactivity.entities.UserInfo;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +37,20 @@ public class MainActivity extends AppCompatActivity {
 
         new Thread(()->{
             db= AppDBHelper.getDatabase(this);
-            UserInfo usi=db.userInfoDao().findByName("usertype");
+            UserInfo usi=db.userInfoDao().findByName("usertype"); System.out.println("Calling db");
+            db= AppDBHelper.getDatabase(this);
+            List<MacroEco> datapoints=db.macroInfoDao().getAllData();
+
+                System.out.println("size db : "+datapoints.size());
+                datapoints.stream().forEach((obj)->{
+                    System.out.println("db : "+obj.toString());
+                });
+            List<AgriData> agridata=db.agroDao().getAllData();
+
+            System.out.println("size db : "+agridata.size());
+            agridata.stream().forEach((obj)->{
+                System.out.println("db agri : "+obj.toString());
+            });
             runOnUiThread(()-> {
 
 
