@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -236,14 +238,23 @@ public class HomeFragment extends Fragment {
             fromYear=Integer.parseInt(fromDateET);
         if(!fromDateET.equals(""))
             toYear=Integer.parseInt(toDateET);
-        Toast.makeText(context, "Dates: "+ fromYear+" "+toYear, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, "Dates: "+ fromYear+" "+toYear, Toast.LENGTH_SHORT).show();
         // cartesian.column(countryData.get(items[position]));
         List<DataEntry> entries=new ArrayList<>();
         final int fromYf=fromYear;
         final int toYf=toYear;
-        points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase(country)).forEach((obj)->{
-            if(obj.getYear()>=fromYf&&obj.getYear()<=toYf)
-                entries.add(new ValueDataEntry(obj.getYear(), obj.getGdp_current_usd()));
+        CheckBox gdpCheckbox = root.findViewById(R.id.gdp);
+        CheckBox importCheckbox = root.findViewById(R.id.importExport);
+        CheckBox fdiInflowCheckbox = root.findViewById(R.id.fdiIn);
+        points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase(country)).forEach((obj)->{ ;
+            if(obj.getYear()>=fromYf&&obj.getYear()<=toYf) {
+                double val = obj.getGdp_current_usd();
+                if (importCheckbox.isChecked())
+                    val = obj.getFdi_net();
+                if (fdiInflowCheckbox.isChecked())
+                    val = obj.getFdi_net_in();
+                entries.add(new ValueDataEntry(obj.getYear(), val));
+            }
         });
         set.data(entries);
     }

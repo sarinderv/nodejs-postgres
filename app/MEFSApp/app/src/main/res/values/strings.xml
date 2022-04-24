@@ -11,7 +11,7 @@
     <string name="title_notifications">Trade</string>
     <string name="macroeconomic_researcher_btn">Macroeconomic Researcher</string>
     <string name="government_official_btn">Government Official</string>
-    <string name="gdp_growth_rage">GDP (Growth Rage)</string>
+    <string name="gdp_growth_rage">GDP (Growth Range)</string>
     <string name="gdp_current_usd">GDP (USA)</string>
     <string name="current_account_balance">Current Account Balance</string>
     <string name="fdi_net">FDI Net</string>
