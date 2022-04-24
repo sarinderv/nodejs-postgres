@@ -3,24 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1925" />
-        <entry key="app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1925" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1925" />
-        <entry key="app/src/main/res/layout/activity_choice.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.27943840579710144" />
-        <entry key="app/src/main/res/layout/choice_sheet_layout.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/dialog_fragment.xml" value="0.18489583333333334" />
-        <entry key="app/src/main/res/layout/fragment_agriculture.xml" value="0.184375" />
-        <entry key="app/src/main/res/layout/fragment_choice_list_list_dialog.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_choice_list_list_dialog_item.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/fragment_macroeconomic.xml" value="0.184375" />
-        <entry key="app/src/main/res/layout/fragment_macroeconomic_chart.xml" value="0.184375" />
-        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/fragment_trade.xml" value="0.184375" />
-        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.184375" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/drawable/border.xml" value="0.1465" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.143" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/activity_dashboard.xml" value="0.125" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.125" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/fragment_filter.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/fragment_home.xml" value="0.1171875" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/fragment_macroeconomic.xml" value="0.17447916666666666" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/fragment_macroeconomic_chart.xml" value="0.16041666666666668" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/fragment_notifications.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/layout/layout.xml" value="0.16145833333333334" />
+        <entry key="..\:/Users/hasin/nodejs-postgres/app/MEFSApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.13333333333333333" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3359375" />
+        <entry key="app/src/main/res/layout/choice_sheet_layout.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.36666666666666664" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_macroeconomic.xml" value="0.321875" />
+        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.33" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.18518518518518517" />
       </map>
     </option>
   </component>
