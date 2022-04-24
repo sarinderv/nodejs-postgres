@@ -1,12 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Trade.TradeFragment">
+    tools:context=".ui.trade.TradeFragment">
 
 
+    <CheckBox
+        android:id="@+id/checkbox_tot_res"
+        android:layout_width="147dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="340dp"
+        android:text="@string/tot_res_trade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_debt"
+        android:layout_width="147dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="480dp"
+        android:text="@string/debt_trade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_totalDebt"
+        android:layout_width="147dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="544dp"
+        android:text="@string/tot_debt_trade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_res_mon"
+        android:layout_width="148dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="465dp"
+        android:text="@string/res_mon_check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/checkbox_res_curr"
+        android:layout_width="144dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="88dp"
+        android:text="@string/res_curr_trade"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_gni_current"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/checkbox_gni_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="272dp"
+        android:text="@string/gni_curr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/show_button_trade"
+        android:layout_width="99dp"
+        android:layout_height="47dp"
+        android:onClick="Check"
+        android:text="@string/show_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_gni_current"
+        app:layout_constraintVertical_bias="0.608" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="89dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="182dp"
+        android:layout_marginBottom="9dp"
+        android:text="@string/trade_textview"
+        app:layout_constraintBottom_toTopOf="@+id/checkbox_res_mon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
