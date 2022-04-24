@@ -19,4 +19,6 @@
     <string name="fdi_net_out">FDI Outflows (USD)</string>
     <string name="show_button"> Show </string>
     <string name="apply_btn"> apply </string>
+    <string name="usr_type_econ"> Economic Researcher </string>
+    <string name="usr_type_govt"> Government Employee </string>
 </resources>
