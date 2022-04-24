@@ -8,26 +8,22 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="-33dp">
 
-    <Spinner
-        android:id="@+id/country_spinner"
-        android:layout_width="128dp"
+    <Button
+        android:id="@+id/apply"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="8dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/apply"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="120dp"
+        android:text="@string/apply_btn"
+        app:layout_constraintStart_toEndOf="@+id/toyear"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/fromyear"
         android:layout_width="64dp"
         android:layout_height="42dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="128dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,37 +34,41 @@
         android:id="@+id/toyear"
         android:layout_width="64dp"
         android:layout_height="42dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="128dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/fromyear"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <Button
-        android:id="@+id/apply"
-        android:layout_width="wrap_content"
+    <Spinner
+        android:id="@+id/country_spinner"
+        android:layout_width="128dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/apply_btn"
-        app:layout_constraintStart_toEndOf="@+id/toyear"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="8dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/apply"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
     <com.anychart.AnyChartView
         android:id="@+id/any_chart_view"
-        android:layout_width="391dp"
-        android:layout_height="439dp"
+        android:layout_width="389dp"
+        android:layout_height="390dp"
         android:layout_marginStart="7dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/gdp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apply"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.935">
 
     </com.anychart.AnyChartView>
 

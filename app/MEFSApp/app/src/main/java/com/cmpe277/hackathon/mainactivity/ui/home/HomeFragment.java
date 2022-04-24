@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -51,7 +53,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private Cartesian cartesian;
-Set set;
+    Set set;
     List<MacroEconomicDataPoint> points;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ Set set;
 //        ChoiceSheetDialog bottomSheet = new ChoiceSheetDialog();
 //        bottomSheet.show(getParentFragmentManager(),
 //                "ModalBottomSheet");
+
         String[] items = new String[]{"USA", "India", "China"};
         Map<String, List<DataEntry>> countryData = new HashMap<>(); // country->data hashmap
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, items);
@@ -125,6 +128,11 @@ Set set;
                 btn.setOnClickListener((view)->{
                    updateChart(root,context,country);
                 });
+
+                CheckBox importCheckbox = root.findViewById(R.id.importExport);
+                importCheckbox.setOnCheckedChangeListener((compoundButton, b) -> updateChart(root, context, country));
+                CheckBox fdiInflowCheckbox = root.findViewById(R.id.fdiIn);
+                fdiInflowCheckbox.setOnCheckedChangeListener((compoundButton, b) -> updateChart(root, context, country));
             }
 
             @Override
@@ -150,9 +158,18 @@ Set set;
         List<DataEntry> entries=new ArrayList<>();
         final int fromYf=fromYear;
         final int toYf=toYear;
-        points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase(country)).forEach((obj)->{
-            if(obj.getYear()>=fromYf&&obj.getYear()<=toYf)
-                entries.add(new ValueDataEntry(obj.getYear(), obj.getGdp_current_usd()));
+        CheckBox gdpCheckbox = root.findViewById(R.id.gdp);
+        CheckBox importCheckbox = root.findViewById(R.id.importExport);
+        CheckBox fdiInflowCheckbox = root.findViewById(R.id.fdiIn);
+        points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase(country)).forEach((obj)->{ ;
+            if(obj.getYear()>=fromYf&&obj.getYear()<=toYf) {
+                double val = obj.getGdp_current_usd();
+                if (importCheckbox.isChecked())
+                    val = obj.getFdi_net();
+                if (fdiInflowCheckbox.isChecked())
+                    val = obj.getFdi_net_in();
+                entries.add(new ValueDataEntry(obj.getYear(), val));
+            }
         });
         set.data(entries);
     }
