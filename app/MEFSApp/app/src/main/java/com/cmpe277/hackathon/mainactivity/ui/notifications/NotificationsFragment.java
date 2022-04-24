@@ -30,9 +30,15 @@ import com.anychart.enums.Position;
 import com.anychart.enums.TooltipPositionMode;
 import com.cmpe277.hackathon.mainactivity.R;
 import com.cmpe277.hackathon.mainactivity.adapter.AgriResponseConverter;
+import com.cmpe277.hackathon.mainactivity.adapter.MacroResponseConverter;
 import com.cmpe277.hackathon.mainactivity.client.RetrofitClientInstance;
+import com.cmpe277.hackathon.mainactivity.database.AppDBHelper;
+import com.cmpe277.hackathon.mainactivity.database.AppDatabase;
 import com.cmpe277.hackathon.mainactivity.databinding.FragmentNotificationsBinding;
+import com.cmpe277.hackathon.mainactivity.dto.AgriAPIData;
 import com.cmpe277.hackathon.mainactivity.dto.AgriAPIResponse;
+import com.cmpe277.hackathon.mainactivity.entities.AgriData;
+import com.cmpe277.hackathon.mainactivity.entities.MacroEco;
 import com.cmpe277.hackathon.mainactivity.models.AgriDataPoint;
 import com.cmpe277.hackathon.mainactivity.service.IMacroService;
 import com.cmpe277.hackathon.mainactivity.ui.home.HomeViewModel;
@@ -52,6 +58,9 @@ public class NotificationsFragment extends Fragment {
     private Cartesian cartesian;
     Set set;
     List<AgriDataPoint> points;
+
+    Map<String, HashMap<String,List<DataEntry>>> fullData = new HashMap<>();
+    AppDatabase db;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel =
@@ -128,8 +137,78 @@ public class NotificationsFragment extends Fragment {
 
             @Override
             public void onFailure(Call<AgriAPIResponse> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(context, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                new Thread(()-> {
+                    db = AppDBHelper.getDatabase(context);
+                    List<AgriData> datapoints=db.agroDao().getAllData();
+
+                    System.out.println("size db : "+datapoints.size());
+                    datapoints.stream().forEach((obj)->{
+                        System.out.println("db : "+obj.toString());
+                    });
+
+                    AgriResponseConverter converter = new AgriResponseConverter();
+                    points = converter.getDBDataPoints(datapoints);
+                    getActivity().runOnUiThread(()-> {
+                        for (String country : items) {
+                            List<DataEntry> gdpdata = new ArrayList<>();
+                            List<DataEntry> gdp1 = new ArrayList<>();
+                            points.stream().filter(medp -> medp.getCountry().equalsIgnoreCase(country)).forEach((obj) -> {
+                                System.out.println(country+": "+obj.getYear()+" year "+obj.getAgrvalueadded());
+                                gdpdata.add(new ValueDataEntry(obj.getYear(), obj.getAgrvalueadded()));
+                                gdp1.add(new ValueDataEntry(obj.getYear(), obj.getFertilizerconsumptionpercentage()));
+                            });
+                            countryData.put(country, gdpdata);
+                            HashMap<String, List<DataEntry>> inputs = fullData.getOrDefault(country, new HashMap<>());
+                            inputs.put("gdp_curr_usd", gdpdata);
+                            fullData.put(country, inputs);
+                            inputs = fullData.getOrDefault(country, new HashMap<>());
+                            inputs.put("Agriculture Value Added", gdp1);
+                            fullData.put(country, inputs);
+                        }
+                        Toast.makeText(context, "Agriculture data loaded " + datapoints.size(), Toast.LENGTH_SHORT).show();
+
+                        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                                // if country changed then get the new data and refresh the chart, only the y-axis needs to be refreshed
+                                Toast.makeText(context, "Country: " + items[position], Toast.LENGTH_SHORT).show();
+                                // cartesian.column(countryData.get(items[position]));
+                                List<DataEntry> entries = countryData.get(items[position]);
+                                String country = dropdown.getSelectedItem().toString();
+                                //cartesian = newCartesian(entries, "GDP by Year");
+                                updateChart(root, context, country);
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parentView) {
+                            }
+
+                        });
+
+                        String country = dropdown.getSelectedItem().toString();
+                        List<DataEntry> data = countryData.get(country);
+                        List<DataEntry> multiData = countryData.get(country);
+                        HashMap<String, List<DataEntry>> newdata = fullData.get(country);
+
+                        set = Set.instantiate();
+                        set.data(data);
+
+                        Mapping series1Data = set.mapAs("{ x: 'x', value: 'value' }");
+
+                        cartesian = newCartesian(series1Data, "GDP by Year");
+                        anyChartView.setChart(cartesian);
+                        EditText formed = (EditText) root.findViewById(R.id.fromyear);
+                        formed.setText("1960");
+                        EditText toyear = (EditText) root.findViewById(R.id.toyear);
+                        toyear.setText("2020");
+                        Button btn = (Button) root.findViewById(R.id.apply);
+                        btn.setOnClickListener((view) -> {
+                            updateChart(root, context, country);
+                        });
+                    });
+
+                }).start();
+
             }
         });
 
